@@ -1,0 +1,12 @@
+
+RealPaver v. 0.4 (c) LINA 2004
+
+INITIAL BOX
+  x in [503 , 1130]
+  y in [462 , 1226]
+  z in [27 , 754]
+
+END OF SOLVING
+  Property:     no solution in the initial box
+  Elapsed time: 0 ms
+

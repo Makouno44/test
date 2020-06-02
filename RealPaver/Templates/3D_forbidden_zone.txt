@@ -1,0 +1,87 @@
+Constants
+
+/* Angle given in degree */
+
+/* Robot parameters */
+
+/* Point A and Point B */
+
+/* Point X1, X2, x3 and X4 to define the object */
+
+/* AB line coef dir */
+Cx = xb-xa, 
+Cy = yb-ya, 
+Cz = zb-za,
+
+/* common points to define object*/
+x1 = X2x, y1 = X2y, z1 = 100,
+x2 = X4x, y2 = X4y, z2 = 100,
+
+/* coeff dir */
+c0x = x1-X2x, c0y = y1-X2y, c0z = z1-X2z,
+c1x = X1x-X2x, c1y = X1y-X2y, c1z = X1z-X2z,
+c2x = X3x-X2x, c2y = X3y-X2y, c2z = X3z-X2z,
+c3x = x2-X4x, c3y = y2-X4y, c3z = z2-X4z,
+c4x = X3x-X4x, c4y = X3y-X4y, c4z = X3z-X4z,
+c5x = X1x-X4x, c5y = X1y-X4y, c5z = X1z-X4z,
+
+/* vectoriel product plane 1 */
+n1x = (c1y*c0z)-(c1z*c0y), 
+n1y = (c1z*c0x)-(c1x*c0z), 
+n1z = (c1x*c0y)-(c1y*c0x),
+
+/* vectoriel product plane 2 */
+n2x = (c0y*c2z)-(c0z*c2y), 
+n2y = (c0z*c2x)-(c0x*c2z), 
+n2z = (c0x*c2y)-(c0y*c2x),
+
+/* vectoriel product plane 3 */
+n3x = (c4y*c3z)-(c4z*c3y), 
+n3y = (c4z*c3x)-(c4x*c3z), 
+n3z = (c4x*c3y)-(c4y*c3x),
+
+/* vectoriel product plane 4 */
+n4x = (c3y*c5z)-(c3z*c5y), 
+n4y = (c3z*c5x)-(c3x*c5z), 
+n4z = (c3x*c5y)-(c3y*c5x),
+
+/* d calculation plane 1*/
+d1 = -(n1x*X1x) - (n1y*X1y) - (n1z*X1z),
+
+/* d calculation plane 2*/
+d2 = -(n2x*X2x) - (n2y*X2y) - (n2z*X2z),
+
+/* d calculation plane 3*/
+d3 = -(n3x*X3x) - (n3y*X3y) - (n3z*X3z),
+
+/* d calculation plane 4*/
+d4 = -(n4x*X4x) - (n4y*X4y) - (n4z*X4z);
+
+Variables
+
+/* Domain of research area */
+x in [min(xa,xb), max(xa,xb)], 
+y in [min(ya,yb), max(ya,yb)],
+z in [min(za,zb), max(za,zb)],
+$t in ]-oo, +oo[;
+
+
+Constraints
+
+/* Equation of the straight line AB */
+x = Cx*t + xa,
+y = Cy*t + ya,
+z = Cz*t + za,
+
+z >= 0, z <= Hight,
+
+/* Definition of the unreachable zone */
+(n1x*x) + (n1y*y) + (n1z*z) + d1 >= 0,
+(n2x*x) + (n2y*y) + (n2z*z) + d2 >= 0,
+(n3x*x) + (n3y*y) + (n3z*z) + d3 >= 0,
+(n4x*x) + (n4y*y) + (n4z*z) + d4 >= 0;
+
+
+Output 
+digits = 4,
+style = bound;

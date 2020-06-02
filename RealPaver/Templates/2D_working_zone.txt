@@ -1,0 +1,35 @@
+Constants
+
+/* Angle given in degree */
+
+/* Robot parameters */
+
+/* Point A and Point B */
+
+/* AB line coef dir */
+cd = (yb-ya)/(xb-xa), 
+
+/* origin coordinate */
+b = ya-cd*xa;
+
+
+Variables
+
+/* Domain of research area */
+x in [min(xa,xb), max(xa,xb)], 
+y in [min(ya,yb), max(ya,yb)];
+
+
+Constraints
+
+/* Definition of the working zone */
+min(r^2 - (x-x0)^2 - (y-y0)^2, (x-x0)^2 + (y-y0)^2 - sr^2) <= 0,
+
+/* Equation of the straight line AB */
+y-cd*x-b = 0 ;
+
+
+Output 
+
+digits = 4 ,
+style = bound;

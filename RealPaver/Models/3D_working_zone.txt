@@ -1,0 +1,44 @@
+Constants
+
+/* Angle given in degree */
+angle = 0.75*@pi,
+
+/* Robot parameters */
+x0 = 0,
+y0 = 0,
+z0 = 0,
+r = 1550,
+sr = 200,
+
+/* Point A and Point B */
+xa = 503, ya = 1226, za = 27,
+xb = 1130, yb = 462, zb = 754,
+
+/* AB line coef dir */
+Cx = xb-xa,
+Cy = yb-ya,
+Cz = zb-za;
+
+
+Variables
+
+/* Domain of research area */
+x in [min(xa,xb), max(xa,xb)], 
+y in [min(ya,yb), max(ya,yb)],
+z in [min(za,zb), max(za,zb)],
+$t in ]-oo, +oo[;
+
+
+Constraints
+
+/* Definition of the working zone */
+min((x-x0)^2 + (y-y0)^2 + (z-z0)^2 - sr^2, r^2 - (x-x0)^2 - (y-y0)^2 - (z-z0)^2) <= 0,
+
+/* Equation of the straight line AB */
+x = Cx*t + xa,
+y = Cy*t + ya,
+z = Cz*t + za;
+
+Output 
+digits = 4 ,
+style = bound;
